@@ -1,0 +1,28 @@
+{
+  "name": "reintegra-server",
+  "version": "1.0.0-alpha",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
+    "eslint": "4.9.0",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.8.0",
+    "nodemon": "1.12.1"
+  },
+  "scripts": {
+    "start": "nodemon src/app.js --inspect --exec babel-node",
+    "build": "babel src -d dist",
+    "serve": "node dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**"
+  },
+  "engines": {
+    "node": "6.10.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
