@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 import router from '../api/index';
 
-function configureMiddleware(app) {
+function configureMiddlewares(app) {
   const logger = morgan(process.env.LOGGER_TYPE);
 
   app.use(helmet());
@@ -20,4 +20,4 @@ function configureMiddleware(app) {
   app.use(router);
 }
 
-export default configureMiddleware;
+export default configureMiddlewares;
