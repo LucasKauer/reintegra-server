@@ -1,4 +1,7 @@
 const messages = {
+  request: {
+    REQUEST_VALIDATION_ERROR: 'REQUEST_VALIDATION_ERROR',
+  },
   mongo: {
     MESSAGE_MONGO_ERROR: 'O dado já existe.',
     SCHEMA_VALIDATION_ERROR: 'DATABASE_SCHEMA_VALIDATION_ERROR',

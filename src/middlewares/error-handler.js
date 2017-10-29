@@ -11,11 +11,20 @@ function errorHandler(err, req, res, next) {
     });
   }
 
+  if (err.name === 'RequestValidationError') {
+    const errors = err.messages.map(e => ({
+      codigo: messages.request.REQUEST_VALIDATION_ERROR,
+      mensagem: e,
+    }));
+
+    return res.status(400).json({ errors });
+  }
+
   return res.status(500).json({
-    error: {
+    errors: [{
       message: messages.default.MESSAGE_INTERNAL_ERROR,
       error: messages.default.INTERNAL_ERROR,
-    },
+    }],
   });
 }
 
