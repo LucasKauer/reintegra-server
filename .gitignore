@@ -52,6 +52,9 @@ typings/
 *.tgz
 
 # dotenv environment variables file
-.env
+env/.env
+
+# vscode configuration
+.vscode
 
 dist/

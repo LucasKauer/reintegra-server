@@ -3,13 +3,24 @@
   "version": "1.0.0-alpha",
   "description": "",
   "main": "app.js",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "dotenv-safe": "^4.0.4",
+    "express": "^4.16.2",
+    "express-validator": "^4.2.1",
+    "helmet": "^3.9.0",
+    "morgan": "^1.9.0"
+  },
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1",
     "eslint": "4.9.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-import": "2.8.0",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.5",
     "nodemon": "1.12.1"
   },
   "scripts": {
