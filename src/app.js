@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv-safe';
 
 import configureExpress from './config/express';
+import configureDatabase from './config/database';
 
 dotenv.load({
   allowEmptyValues: true,
@@ -12,5 +13,14 @@ dotenv.load({
 const app = express();
 
 configureExpress(app);
+
+const {
+  DB_BASE,
+  DB_HOST,
+  DB_USER,
+  DB_PWD,
+} = process.env;
+
+configureDatabase.connectToDatabase(DB_BASE, DB_HOST, DB_USER, DB_PWD);
 
 app.listen(process.env.PORT);
