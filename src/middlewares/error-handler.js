@@ -11,13 +11,13 @@ function errorHandler(err, req, res, next) {
     return res.status(400).json({ errors });
   }
 
-  if (err.name === 'JsonWebTokenError') {
+  if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
     const errors = [{
-      codigo: messages.jwt.VERIFY_TOKEN_VALIDATION_ERROR,
-      mensagem: messages.jwt.MESSAGE_VERIFY_TOKEN_ERROR,
+      codigo: messages.auth.VERIFY_TOKEN_VALIDATION_ERROR,
+      mensagem: messages.auth.MESSAGE_VERIFY_TOKEN_ERROR,
     }];
 
-    return res.status(400).json({ errors });
+    return res.status(401).json({ errors });
   }
 
   if (err.name === 'ValidationError') {
@@ -36,6 +36,15 @@ function errorHandler(err, req, res, next) {
     }));
 
     return res.status(400).json({ errors });
+  }
+
+  if (err.name === 'UnauthorizedError') {
+    const errors = [{
+      codigo: messages.auth.TOKEN_VALIDATION_ERROR,
+      mensagem: err.message,
+    }];
+
+    return res.status(401).json({ errors });
   }
 
   return res.status(500).json({

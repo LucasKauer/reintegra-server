@@ -1,15 +1,16 @@
 import { Router } from 'express';
 
 import user from './controller';
+import authenticated from '../../../middlewares/authentication';
 
 const router = Router();
 
 router.route('/user')
-  .get(user.findAll)
+  .get(authenticated, user.findAll)
   .post(user.create);
 
 router.route('/user/:nickname')
-  .get(user.findByNickname)
-  .delete(user.remove);
+  .get(authenticated, user.findByNickname)
+  .delete(authenticated, user.remove);
 
 export default router;

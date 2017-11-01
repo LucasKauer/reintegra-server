@@ -6,7 +6,8 @@ const messages = {
     SCHEMA_VALIDATION_ERROR: 'DATABASE_SCHEMA_VALIDATION_ERROR',
     MESSAGE_MONGO_ERROR: 'O dado já existe.',
   },
-  jwt: {
+  auth: {
+    TOKEN_VALIDATION_ERROR: 'TOKEN_VALIDATION_ERROR',
     VERIFY_TOKEN_VALIDATION_ERROR: 'VERIFY_TOKEN_VALIDATION_ERROR',
     MESSAGE_VERIFY_TOKEN_ERROR: 'O token informado é inválido ou está expirado.',
   },

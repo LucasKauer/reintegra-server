@@ -23,6 +23,11 @@ function createToken({ _id }) {
 function verifyToken(token) {
   const { SECURITY_SECRET } = process.env;
 
+  if (!token) {
+    /* eslint-disable no-throw-literal */
+    throw { name: 'UnauthorizedError', message: 'Informe o token de acesso.' };
+  }
+
   return new Promise((resolve, reject) => {
     jwt.verify(token, SECURITY_SECRET, (err, decoded) => {
       if (err) reject(err);
