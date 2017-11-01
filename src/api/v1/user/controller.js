@@ -7,7 +7,7 @@ function findAll(req, res) {
       res.status(204).end();
     }
 
-    res.status(200).json(users);
+    res.status(200).json({ dados: users });
   });
 }
 
@@ -19,7 +19,7 @@ function findByNickname(req, res) {
       res.status(204).end();
     }
 
-    res.status(200).json(user);
+    res.status(200).json({ dados: user });
   });
 }
 
@@ -39,7 +39,7 @@ function create(req, res, next) {
 
   userService.create(user).then(() => {
     res.status(201).location(`api/v1/user/${nickname}`).end();
-  }).catch((err) => { next(err); });
+  }).catch(next);
 }
 
 function remove(req, res) {
