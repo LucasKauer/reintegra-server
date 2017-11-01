@@ -3,12 +3,30 @@ import messages from './const/error';
 /* eslint-disable no-unused-vars */
 function errorHandler(err, req, res, next) {
   if (err.name === 'MongoError' && err.code === 11000) {
-    return res.status(400).json({
-      error: {
-        codigo: messages.mongo.SCHEMA_VALIDATION_ERROR,
-        mensagem: messages.mongo.MESSAGE_MONGO_ERROR,
-      },
-    });
+    const errors = [{
+      codigo: messages.mongo.SCHEMA_VALIDATION_ERROR,
+      mensagem: messages.mongo.MESSAGE_MONGO_ERROR,
+    }];
+
+    return res.status(400).json({ errors });
+  }
+
+  if (err.name === 'JsonWebTokenError') {
+    const errors = [{
+      codigo: messages.jwt.VERIFY_TOKEN_VALIDATION_ERROR,
+      mensagem: messages.jwt.MESSAGE_VERIFY_TOKEN_ERROR,
+    }];
+
+    return res.status(400).json({ errors });
+  }
+
+  if (err.name === 'ValidationError') {
+    const errors = err.messages.map(e => ({
+      codigo: e.code,
+      mensagem: e.message,
+    }));
+
+    return res.status(400).json({ errors });
   }
 
   if (err.name === 'RequestValidationError') {
