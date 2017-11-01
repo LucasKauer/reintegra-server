@@ -1,10 +1,10 @@
 import User from '../models/user';
 
-const projection = '-_id -__v -password';
+const defaultProjection = '-_id -__v -password';
 
 function findAll() {
   return new Promise((resolve, reject) => {
-    User.find({}, projection, (err, users) => {
+    User.find({}, defaultProjection, (err, users) => {
       if (err) return reject(err);
 
       return resolve(users);
@@ -12,9 +12,10 @@ function findAll() {
   });
 }
 
-function findByNickname(nickname) {
+function findByNickname(nickname, projection) {
   return new Promise((resolve, reject) => {
-    User.findOne({ nickname }, projection, (err, user) => {
+    const proj = projection === '' ? projection : projection || defaultProjection;
+    User.findOne({ nickname }, proj, (err, user) => {
       if (err) return reject(err);
 
       return resolve(user);
