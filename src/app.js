@@ -4,10 +4,12 @@ import dotenv from 'dotenv-safe';
 import configureExpress from './config/express';
 import configureDatabase from './config/database';
 
+const env = process.env.ENVIRONMENT || '';
+
 dotenv.load({
   allowEmptyValues: true,
   sample: './env/.env.example',
-  path: './env/.env',
+  path: `./env/${env}.env`,
 });
 
 const app = express();
