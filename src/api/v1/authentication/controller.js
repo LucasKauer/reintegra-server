@@ -6,9 +6,7 @@ function verifyToken(req, res, next) {
   const token = req.get('authorization');
 
   authenticationService.verifyToken(token)
-    .then(() => {
-      res.status(200).json({ dados: { token } });
-    })
+    .then(() => res.status(200).json({ dados: { token } }))
     .catch(next);
 }
 
@@ -63,7 +61,7 @@ function login(req, res, next) {
   userService.findByNickname(nickname, '-__v')
     .then(comparePassword)
     .then(createToken)
-    .then(token => (res.status(200).json({ dados: { token } })))
+    .then(token => res.status(200).json({ dados: { token } }))
     .catch(next);
 }
 
