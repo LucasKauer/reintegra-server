@@ -1,4 +1,6 @@
+import jobService from '../../../services/job';
 import userService from '../../../services/user';
+
 import User from '../../../models/user';
 
 function findAll(req, res) {
@@ -37,17 +39,19 @@ function create(req, res, next) {
 
   const user = new User({ nickname, password });
 
-  userService.create(user).then(() => {
-    res.status(201).location(`api/v1/user/${nickname}`).end();
-  }).catch(next);
+  userService.create(user)
+    .then(() => res.status(201).location(`api/v1/user/${nickname}`).end())
+    .catch(next);
 }
 
-function remove(req, res) {
+function remove(req, res, next) {
   const { nickname } = req.params;
 
-  userService.remove(nickname).then(() => {
-    res.status(204).end();
-  });
+  userService.findByNickname(nickname, 'jobAnnouncements')
+    .then(({ jobAnnouncements }) => jobService.remove(jobAnnouncements))
+    .then(() => userService.remove(nickname))
+    .then(() => res.status(204).end())
+    .catch(err => next(err));
 }
 
 export default {
