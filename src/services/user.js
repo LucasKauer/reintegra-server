@@ -43,9 +43,31 @@ function remove(nickname) {
   });
 }
 
+function addJobAnnouncement(id, job) {
+  return new Promise((resolve, reject) => {
+    User.update({ _id: id }, { $push: { jobAnnouncements: job } }, (err, user) => {
+      if (err) reject(err);
+
+      resolve(user);
+    });
+  });
+}
+
+function removeJobAnnouncements(id) {
+  return new Promise((resolve, reject) => {
+    User.update({ jobAnnouncements: id }, { $set: { jobAnnouncements: [] } }, (err, user) => {
+      if (err) reject(err);
+
+      resolve(user);
+    });
+  });
+}
+
 export default {
   findAll,
   findByNickname,
   create,
   remove,
+  addJobAnnouncement,
+  removeJobAnnouncements,
 };
