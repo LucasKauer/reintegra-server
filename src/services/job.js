@@ -1,6 +1,6 @@
 import Job from '../models/job';
 
-const defaultProjection = '-__v';
+const defaultProjection = '-_id -__v';
 
 function findAll() {
   return new Promise((resolve, reject) => {
