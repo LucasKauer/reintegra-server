@@ -15,7 +15,7 @@ function findAll() {
 function findByTitle(title, projection) {
   return new Promise((resolve, reject) => {
     const proj = projection === '' ? projection : projection || defaultProjection;
-    Job.find({ title }, proj, (err, jobs) => {
+    Job.find({ title: { $regex: `.*${title}.*`, $options: 'gi' } }, proj, (err, jobs) => {
       if (err) return reject(err);
 
       return resolve(jobs);
