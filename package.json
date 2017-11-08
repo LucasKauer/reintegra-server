@@ -10,6 +10,7 @@
   "private": true,
   "main": "app.js",
   "dependencies": {
+    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
