@@ -10,6 +10,7 @@
   "private": true,
   "main": "app.js",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
@@ -24,7 +25,6 @@
     "morgan": "^1.9.0"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
     "babel-preset-env": "1.6.1",
     "eslint": "4.9.0",
     "eslint-config-airbnb-base": "12.1.0",
@@ -45,6 +45,12 @@
   "engines": {
     "node": "6.11.5"
   },
-  "keywords": ["Egresso do Sistema Prisional", "Plataforma para Reinserção no Mercado de Trabalho Formal", "Reintegração", "Ressocialização", "Isolamento social"],
+  "keywords": [
+    "Egresso do Sistema Prisional",
+    "Plataforma para Reinserção no Mercado de Trabalho Formal",
+    "Reintegração",
+    "Ressocialização",
+    "Isolamento social"
+  ],
   "license": "ISC"
 }
