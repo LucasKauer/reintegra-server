@@ -2,10 +2,10 @@ import messages from './const/error';
 
 /* eslint-disable no-unused-vars */
 function errorHandler(err, req, res, next) {
-  if (err.name === 'MongoError' && err.code === 11000) {
+  if (err.name === 'MongoError' || err.name === 'ValidationError') {
     const errors = [{
       codigo: messages.mongo.SCHEMA_VALIDATION_ERROR,
-      mensagem: messages.mongo.MESSAGE_MONGO_ERROR,
+      mensagem: err.message,
     }];
 
     return res.status(400).json({ errors });
@@ -20,7 +20,7 @@ function errorHandler(err, req, res, next) {
     return res.status(401).json({ errors });
   }
 
-  if (err.name === 'ValidationError') {
+  if (err.name === 'InternalValidationError') {
     const errors = err.messages.map(e => ({
       codigo: e.code,
       mensagem: e.message,

@@ -30,7 +30,7 @@ function login(req, res, next) {
         if (!match) {
           /* eslint-disable prefer-promise-reject-errors */
           reject({
-            name: 'ValidationError',
+            name: 'InternalValidationError',
             messages: [{
               code: 'INCORRECT_PASSWORD',
               message: 'A senha não corresponde a do usuário.',
@@ -46,7 +46,7 @@ function login(req, res, next) {
     new Promise((resolve, reject) => {
       if (!userFound) {
         throw {
-          name: 'ValidationError',
+          name: 'InternalValidationError',
           messages: [{
             code: 'USER_NOT_FOUND',
             message: 'O usuário não foi encontrado.',

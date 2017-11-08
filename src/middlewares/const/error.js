@@ -4,7 +4,6 @@ const messages = {
   },
   mongo: {
     SCHEMA_VALIDATION_ERROR: 'DATABASE_SCHEMA_VALIDATION_ERROR',
-    MESSAGE_MONGO_ERROR: 'O dado já existe.',
   },
   auth: {
     TOKEN_VALIDATION_ERROR: 'TOKEN_VALIDATION_ERROR',
