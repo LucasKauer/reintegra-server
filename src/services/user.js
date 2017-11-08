@@ -33,6 +33,21 @@ function create(user) {
   });
 }
 
+function update(nickname, upsertData) {
+  return new Promise((resolve, reject) => {
+    const options = {
+      upsert: true,
+      runValidators: true,
+    };
+
+    User.update({ nickname }, upsertData, options, (err) => {
+      if (err) return reject(err);
+
+      return resolve();
+    });
+  });
+}
+
 function remove(nickname) {
   return new Promise((resolve, reject) => {
     User.remove({ nickname }, (err) => {
@@ -67,6 +82,7 @@ export default {
   findAll,
   findByNickname,
   create,
+  update,
   remove,
   addJobAnnouncement,
   removeJobAnnouncements,
