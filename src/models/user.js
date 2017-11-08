@@ -77,6 +77,12 @@ const userSchema = new mongoose.Schema({
   number: {
     type: Number,
   },
+  email: {
+    type: String,
+  },
+  cellPhone: {
+    type: String,
+  },
 }, { minimize: false });
 
 userSchema.pre('save', function preSafe(next) {
