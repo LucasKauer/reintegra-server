@@ -20,6 +20,42 @@ const userSchema = new mongoose.Schema({
   jobAnnouncements: {
     type: [mongoose.Schema.ObjectId],
   },
+  cpf: {
+    type: String,
+  },
+  birthday: {
+    type: Date,
+  },
+  name: {
+    type: String,
+  },
+  rg: {
+    type: String,
+  },
+  gender: {
+    type: String,
+    enum: [
+      'M',
+      'F',
+      'O',
+    ],
+  },
+  stateOfBirth: {
+    type: String,
+  },
+  nationality: {
+    type: String,
+  },
+  maritalStatus: {
+    type: String,
+    enum: [
+      'MARRIED',
+      'DIVORCED',
+      'SEPARETED',
+      'SINGLE',
+      'WIDOWED',
+    ],
+  },
 }, { minimize: false });
 
 userSchema.pre('save', function preSafe(next) {
