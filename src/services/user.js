@@ -33,14 +33,14 @@ function create(user) {
   });
 }
 
-function update(nickname, upsertData) {
+function update(id, upsertData) {
   return new Promise((resolve, reject) => {
     const options = {
       upsert: true,
       runValidators: true,
     };
 
-    User.update({ nickname }, upsertData, options, (err) => {
+    User.update({ _id: id }, upsertData, options, (err) => {
       if (err) return reject(err);
 
       return resolve();
