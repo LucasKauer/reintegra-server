@@ -1,6 +1,6 @@
 <p align="center">
 	<a href="https://github.com/lucaskauer/reintegra-server">
-		<img src="./logo.png" height="150" alt="Reintegra API">
+		<img src="https://github.com/LucasKauer/reintegra-client/blob/master/src/assets/logo.png" height="150" alt="Reintegra API">
 	</a>
 </p>
 
