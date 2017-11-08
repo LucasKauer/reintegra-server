@@ -56,6 +56,27 @@ const userSchema = new mongoose.Schema({
       'WIDOWED',
     ],
   },
+  cep: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  neighborhood: {
+    type: String,
+  },
+  address: {
+    type: String,
+  },
+  complement: {
+    type: String,
+  },
+  number: {
+    type: Number,
+  },
 }, { minimize: false });
 
 userSchema.pre('save', function preSafe(next) {
