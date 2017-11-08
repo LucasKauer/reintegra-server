@@ -44,6 +44,16 @@ function create(req, res, next) {
     .catch(next);
 }
 
+function update(req, res, next) {
+  const { id } = req.user;
+
+  const upsertData = req.body;
+
+  userService.update(id, upsertData)
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 function remove(req, res, next) {
   const { nickname } = req.params;
 
@@ -58,5 +68,6 @@ export default {
   findAll,
   findByNickname,
   create,
+  update,
   remove,
 };

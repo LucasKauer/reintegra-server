@@ -7,7 +7,8 @@ const router = Router();
 
 router.route('/user')
   .get(authenticated, user.findAll)
-  .post(user.create);
+  .post(user.create)
+  .put(authenticated, user.update);
 
 router.route('/user/:nickname')
   .get(authenticated, user.findByNickname)
