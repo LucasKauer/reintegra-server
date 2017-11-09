@@ -10,6 +10,7 @@ dotenv.load({
   allowEmptyValues: true,
   sample: './env/.env.example',
   path: `./env/${env}.env`,
+  silent: process.env.NODE_ENV === 'production',
 });
 
 const app = express();
