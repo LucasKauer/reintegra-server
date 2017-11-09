@@ -33,7 +33,7 @@
     "nodemon": "1.12.1"
   },
   "scripts": {
-    "start": "npm run build && NODE_ENV=production npm run serve",
+    "start": "npm run build && npm run serve",
     "start:dev": "nodemon src/app.js --inspect --exec babel-node",
     "start:docker": "ENVIRONMENT=docker nodemon src/app.js --inspect --exec babel-node",
     "build": "babel src -d dist",
