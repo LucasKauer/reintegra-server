@@ -4,7 +4,7 @@
   "author": {
     "name": "Lucas de Freitas Kauer",
     "email": "lucas.kauerrs@hotmail.com",
-    "url": "https://lucaskauer.github.io/personal-profile/"
+    "url": "https://reintegra-server.herokuapp.com/api/v1/status"
   },
   "description": "",
   "main": "app.js",
