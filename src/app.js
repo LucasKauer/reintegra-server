@@ -6,13 +6,13 @@ import configureDatabase from './config/database';
 
 const env = process.env.ENVIRONMENT || '';
 
-// if (process.env.NODE_ENV !== 'production') {
-//   dotenv.load({
-//     allowEmptyValues: true,
-//     sample: './env/.env.example',
-//     path: `./env/${env}.env`
-//   });
-// }
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.load({
+    allowEmptyValues: true,
+    sample: './env/.env.example',
+    path: `./env/${env}.env`
+  });
+}
 
 const app = express();
 
