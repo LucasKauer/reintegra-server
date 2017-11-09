@@ -7,7 +7,6 @@
     "url": "https://lucaskauer.github.io/personal-profile/"
   },
   "description": "",
-  "private": true,
   "main": "app.js",
   "dependencies": {
     "babel-cli": "6.26.0",
@@ -41,9 +40,6 @@
     "serve": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**"
-  },
-  "engines": {
-    "node": "6.11.5"
   },
   "keywords": [
     "Egresso do Sistema Prisional",
