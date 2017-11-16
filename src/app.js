@@ -4,9 +4,9 @@ import dotenv from 'dotenv-safe';
 import configureExpress from './config/express';
 import configureDatabase from './config/database';
 
-const env = process.env.ENVIRONMENT || '';
-
 if (process.env.NODE_ENV !== 'production') {
+  const env = process.env.ENVIRONMENT || '';
+  
   dotenv.load({
     allowEmptyValues: true,
     sample: './env/.env.example',
