@@ -47,6 +47,15 @@ function errorHandler(err, req, res, next) {
     return res.status(401).json({ errors });
   }
 
+  if (err.name === 'FileUploadError') {
+    const errors = [{
+      codigo: messages.file.FILE_UPLOAD_ERROR,
+      mensagem: err.message,
+    }];
+
+    return res.status(401).json({ errors });
+  }
+
   return res.status(500).json({
     errors: [{
       message: messages.default.MESSAGE_INTERNAL_ERROR,
