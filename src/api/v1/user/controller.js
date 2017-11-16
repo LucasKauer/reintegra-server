@@ -64,10 +64,28 @@ function remove(req, res, next) {
     .catch(err => next(err));
 }
 
+function uploadResume(req, res, next) {
+  const { id } = req.user;
+
+  const { originalname, filename} = req.file;
+  
+  const upsertData = {
+    resume: originalname,
+    file: {
+      name: filename
+    }
+  };
+
+  userService.update(id, upsertData)
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 export default {
   findAll,
   findByNickname,
   create,
   update,
   remove,
+  uploadResume,
 };
