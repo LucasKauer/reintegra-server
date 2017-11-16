@@ -83,6 +83,12 @@ const userSchema = new mongoose.Schema({
   cellPhone: {
     type: String,
   },
+  resume: {
+    name: String,
+    file: {
+      name: String,
+    },
+  },
 }, { minimize: false });
 
 userSchema.pre('save', function preSafe(next) {
