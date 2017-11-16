@@ -87,6 +87,7 @@ const userSchema = new mongoose.Schema({
     name: String,
     file: {
       name: String,
+      mimeType: String,
     },
   },
 }, { minimize: false });
