@@ -58,4 +58,7 @@ env/*.env
 # vscode configuration
 .vscode
 
+# uploaded files
+uploadedFiles/
+
 dist/
