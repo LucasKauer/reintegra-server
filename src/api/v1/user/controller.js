@@ -71,13 +71,13 @@ function uploadResume(req, res, next) {
 
   const { originalname, filename, mimetype } = req.file;
   const upsertData = {
-    resume:  {
+    resume: {
       name: originalname,
       file: {
         name: filename,
         mimeType: mimetype,
-      }
-    }
+      },
+    },
   };
 
   userService.update(id, upsertData)
