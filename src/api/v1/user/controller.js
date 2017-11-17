@@ -3,6 +3,8 @@ import userService from '../../../services/user';
 
 import User from '../../../models/user';
 
+import readFileUploaded from '../../../services/util/file';
+
 function findAll(req, res) {
   userService.findAll().then((users) => {
     if (!users || !users.length) {
@@ -67,17 +69,31 @@ function remove(req, res, next) {
 function uploadResume(req, res, next) {
   const { id } = req.user;
 
-  const { originalname, filename} = req.file;
-  
+  const { originalname, filename, mimetype } = req.file;
   const upsertData = {
-    resume: originalname,
-    file: {
-      name: filename
+    resume:  {
+      name: originalname,
+      file: {
+        name: filename,
+        mimeType: mimetype,
+      }
     }
   };
 
   userService.update(id, upsertData)
     .then(() => res.status(204).end())
+    .catch(next);
+}
+
+function findResume(req, res, next) {
+  const { nickname } = req.params;
+
+  userService.findByNickname(nickname, 'resume')
+    .then(({ file }) => ({ file, document: readFileUploaded(file.name) }))
+    .then(({ file, document }) => {
+      res.setHeader('Content-Type', file.mimeType);
+      document.pipe(res);
+    })
     .catch(next);
 }
 
@@ -88,4 +104,5 @@ export default {
   update,
   remove,
   uploadResume,
+  findResume,
 };

@@ -18,4 +18,7 @@ router.route('/user/:nickname')
 router.route('/user/resume')
   .post([authenticated, upload.single('resume')], user.uploadResume);
 
+router.route('/user/resume/:nickname')
+  .get(authenticated, user.findResume);
+
 export default router;
