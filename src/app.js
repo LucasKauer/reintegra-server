@@ -6,11 +6,11 @@ import configureDatabase from './config/database';
 
 if (process.env.NODE_ENV !== 'production') {
   const env = process.env.ENVIRONMENT || '';
-  
+
   dotenv.load({
     allowEmptyValues: true,
     sample: './env/.env.example',
-    path: `./env/${env}.env`
+    path: `./env/${env}.env`,
   });
 }
 
