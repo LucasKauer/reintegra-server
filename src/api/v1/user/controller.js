@@ -15,6 +15,20 @@ function findAll(req, res) {
   });
 }
 
+function getNickname(req, res, next) {
+  const { id } = req.user;
+
+  userService.findById(id, 'nickname')
+    .then(({ nickname }) => {
+      if (!nickname) {
+        res.status(204).end();
+      }
+
+      res.status(200).json({ dados: { nickname } });
+    })
+    .catch(next);
+}
+
 function findByNickname(req, res) {
   const { nickname } = req.params;
 
@@ -100,6 +114,7 @@ function findResume(req, res, next) {
 export default {
   findAll,
   findByNickname,
+  getNickname,
   create,
   update,
   remove,

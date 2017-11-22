@@ -12,6 +12,17 @@ function findAll() {
   });
 }
 
+function findById(id, projection) {
+  return new Promise((resolve, reject) => {
+    const proj = projection === '' ? projection : projection || defaultProjection;
+    User.findOne({ _id: id }, proj, (err, user) => {
+      if (err) return reject(err);
+
+      return resolve(user);
+    });
+  });
+}
+
 function findByNickname(nickname, projection) {
   return new Promise((resolve, reject) => {
     const proj = projection === '' ? projection : projection || defaultProjection;
@@ -80,6 +91,7 @@ function removeJobAnnouncements(id) {
 
 export default {
   findAll,
+  findById,
   findByNickname,
   create,
   update,

@@ -11,6 +11,9 @@ router.route('/user')
   .post(user.create)
   .put(authenticated, user.update);
 
+router.route('/user/nickname')
+  .get(authenticated, user.getNickname);
+
 router.route('/user/:nickname')
   .get(authenticated, user.findByNickname)
   .delete(authenticated, user.remove);
